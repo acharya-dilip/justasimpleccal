@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <gtk/gtk.h>
+
+static void activate(GtkApplication *app, gpointer user_data) {
+    GtkWidget *window;
+
+    window= gtk_application_window_new (app);
+    //Set the title of the window
+    gtk_window_set_title (GTK_WINDOW (window),"CALCULATOR");
+    //Set the size of the window (GTK_WINDOW(window) width, height)
+    gtk_window_set_default_size (GTK_WINDOW(window), 200, 200);
+    gtk_window_present (GTK_WINDOW(window));
+}
