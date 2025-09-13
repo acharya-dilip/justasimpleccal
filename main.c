@@ -15,6 +15,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *numbut9;//button for 9
     GtkWidget *numbut0;//button for 0
     GtkWidget *decimalbut; //button for decimal ( . )
+    GtkWidget *clearbut; //button to clear the screen
 
 
 
@@ -66,20 +67,30 @@ static void activate(GtkApplication *app, gpointer user_data) {
     //placing the numbut7 on the grid
     gtk_grid_attach(GTK_GRID(numgrid),numbut7,0,2,1,1);
 
-    //Initialising the button 8
+    //Initialising the button for 8
     numbut8 = gtk_button_new_with_label("8");
     //placing the numbut8 on the grid
     gtk_grid_attach(GTK_GRID(numgrid),numbut8,1,2,1,1);
 
-    //Initialsing the numbut9 on the grid
+    //Initialsing the button for 9
     numbut9 = gtk_button_new_with_label("9");
     //placing the numbut9 on the grid
     gtk_grid_attach(GTK_GRID(numgrid),numbut9,2,2,1,1);
 
-    //Intialising the numbut0 on the grid
+    //Intialising the button for 0
     numbut0 = gtk_button_new_with_label("0");
     //placing the numbut0 on the grid
     gtk_grid_attach(GTK_GRID(numgrid),numbut0,1,3,1,1);
+
+    //Initialising the button for decimal 9 ( . )
+    decimalbut = gtk_button_new_with_label(".");
+    //Placing the decimalbut on the grid
+    gtk_grid_attach(GTK_GRID(numgrid),decimalbut,0,3,1,1);
+
+    //Intialising the button to clear the display
+    clearbut = gtk_button_new_with_label("C");
+    //Placing the clear button on the grid
+    gtk_grid_attach(GTK_GRID(numgrid),clearbut,2,3,1,1);
 
 
 }
