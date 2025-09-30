@@ -16,10 +16,17 @@ static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *numbut0;//button for 0
     GtkWidget *decimalbut; //button for decimal ( . )
     GtkWidget *clearbut; //button to clear the screen
+    GtkWidget *addbut; //button for addition
+    GtkWidget *subtractbut; //button for subtraction
+    GtkWidget *multiplbut; //button for multiply
+    GtkWidget *divisionbut; //button to divide
+    GtkWidget *percentbut; //button for percentage thingy
 
 
 
+    //Create a new Window
     calculator= gtk_application_window_new (app);
+
     //Set the title of the window
     gtk_window_set_title (GTK_WINDOW (calculator),"CALCULATOR");
     //Set the size of the window (GTK_WINDOW(window) width, height)
@@ -30,7 +37,6 @@ static void activate(GtkApplication *app, gpointer user_data) {
     numgrid=gtk_grid_new(); //Initializing the Grid
     gtk_window_set_child (GTK_WINDOW (calculator),numgrid);//Setting the grid as a child of the windows or subwindow
 
-    //!THIS IS DEPRECIATED ====| gtk_widget_show_all(window);
 
     //Initializing the button for 1
     numbut1 = gtk_button_new_with_label("1");
@@ -88,9 +94,14 @@ static void activate(GtkApplication *app, gpointer user_data) {
     gtk_grid_attach(GTK_GRID(numgrid),decimalbut,0,3,1,1);
 
     //Intialising the button to clear the display
-    clearbut = gtk_button_new_with_label("C");
+    percentbut = gtk_button_new_with_label("%");
     //Placing the clear button on the grid
-    gtk_grid_attach(GTK_GRID(numgrid),clearbut,2,3,1,1);
+    gtk_grid_attach(GTK_GRID(numgrid),percentbut,2,3,1,1);
+
+    //Initiliasising the button for addition
+    addbut = gtk_button_new_with_label("+");
+    //Placing the addition button on the grid
+    gtk_grid_attach(GTK_GRID(numgrid),addbut,3,0,1,1);
 
 
 }
