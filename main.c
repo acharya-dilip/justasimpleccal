@@ -50,7 +50,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
     gtk_grid_attach(GTK_GRID(calgrid),subtractbut,3,1,1,1);
 
     //Init for Multiply button
-    multiplybut = gtk_button_new_with_label("x");
+    multiplybut = gtk_button_new_with_label("×");
     //placing the multiply button on the grid
     gtk_grid_attach(GTK_GRID(calgrid),multiplybut,3,2,1,1);
 
