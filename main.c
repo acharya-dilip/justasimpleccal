@@ -5,6 +5,7 @@
 
 static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *calculator;
+    GtkWidget *displaystuff; //stuff to be displayed on display
     GtkWidget *displaybar; //a display bar to see what's happening
     GtkWidget *calbuttongrid; //the grid for buttons
     GtkWidget *numbut1;//button for 1
@@ -28,7 +29,11 @@ static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *modbut; //button for mod operation or getting remainder operation
     GtkWidget *squarebut; //button for squaring
 
-
+    //TEXT TO DISPLAY ON THE DISPLAYBAR
+    int a;
+    int b;
+    char oprtr[20];
+    int result;
 
     //Create a new Window
     calculator= gtk_application_window_new (app);
@@ -36,7 +41,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
     //Set the title of the window
     gtk_window_set_title (GTK_WINDOW (calculator),"CALCULATOR");
     //Set the size of the window (GTK_WINDOW(window) width, height)
-    gtk_window_set_default_size (GTK_WINDOW(calculator), 200, 240);
+    gtk_window_set_default_size (GTK_WINDOW(calculator), 200, 230);
     //makes the window visible
     gtk_window_present (GTK_WINDOW(calculator));
 
@@ -45,12 +50,13 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
     //DISPLAY BAR
 
-    //initialising display bar
-    displaybar = gtk_entry_new();
-    //Making the entry ready-only so you can't directly type stuff into it
-    gtk_editable_set_editable(GTK_EDITABLE(displaybar),FALSE);
-    //Placing displaybar on grid
+    //initialising displaybar
+    displaybar = gtk_frame_new("0");
+    //attaching frame to grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),displaybar,0,0,4,1);
+
+
+
 
 
     //PROTOTYPE helper for BUTTONS that move them in entire rows or columns together
