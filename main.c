@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
 
-extern int moverow = 0;
-extern int movecol = 0;
+
 
 static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *calculator;
+    GtkWidget *displaybar; //a display bar to see what's happening
     GtkWidget *calbuttongrid; //the grid for buttons
     GtkWidget *numbut1;//button for 1
     GtkWidget *numbut2;//button for 2
@@ -30,25 +30,35 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
 
 
-
     //Create a new Window
     calculator= gtk_application_window_new (app);
 
     //Set the title of the window
     gtk_window_set_title (GTK_WINDOW (calculator),"CALCULATOR");
     //Set the size of the window (GTK_WINDOW(window) width, height)
-    gtk_window_set_default_size (GTK_WINDOW(calculator), 200, 270);
+    gtk_window_set_default_size (GTK_WINDOW(calculator), 200, 240);
     //makes the window visible
     gtk_window_present (GTK_WINDOW(calculator));
 
     calbuttongrid=gtk_grid_new(); //Initializing the calbutton grid Grid
     gtk_window_set_child (GTK_WINDOW (calculator),calbuttongrid);//setting the main grid ass the child of main window
 
+    //DISPLAY BAR
+
+    //initialising display bar
+    displaybar = gtk_entry_new();
+    //Placing displaybar on grid
+    gtk_grid_attach(GTK_GRID(calbuttongrid),displaybar,0,0,4,1);
+
+    //PROTOTYPE helper for BUTTONS that move them in entire rows or columns together
+    int moverow = 2;
+    int movecol = 0;
+
     //BASIC ARITHMATIC OPERATORS
     //Initiliasising the button for addition
     addbut = gtk_button_new_with_label("+");
     //Placing the addition button on the grid
-    gtk_grid_attach(GTK_GRID(calbuttongrid),addbut,3+movecol,1+moverow,1,1);
+    gtk_grid_attach(GTK_GRID(calbuttongrid),addbut,3+movecol,0+moverow,1,1);
 
     //Init for subtract button
     subtractbut = gtk_button_new_with_label("-");
