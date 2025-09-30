@@ -47,8 +47,11 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
     //initialising display bar
     displaybar = gtk_entry_new();
+    //Making the entry ready-only so you can't directly type stuff into it
+    gtk_editable_set_editable(GTK_EDITABLE(displaybar),FALSE);
     //Placing displaybar on grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),displaybar,0,0,4,1);
+
 
     //PROTOTYPE helper for BUTTONS that move them in entire rows or columns together
     int moverow = 2;
