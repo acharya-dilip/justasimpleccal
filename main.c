@@ -21,7 +21,10 @@ static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *multiplybut; //button for multiply
     GtkWidget *dividebut; //button to divide
     GtkWidget *percentbut; //button for percentage thingy
-    GtkWidget *resultbut;
+    GtkWidget *resultbut; //button for getting the result
+    GtkWidget *modbut; //button for mod operation or getting remainder operation
+    GtkWidget *squarebut; //button for squaring
+
 
 
 
@@ -114,10 +117,20 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
     //OTHER MISC BUTTONS
 
-    //Init for the = or the result button
-    resultbut = gtk_button_new_with_label("=");
-    //Placing button on the grid
-    gtk_grid_attach(GTK_GRID(calgrid),resultbut,3,4,1,1);
+    //init of clear display button
+    clearbut = gtk_button_new_with_label("C");
+    //Placing clearbutton on the grid
+    gtk_grid_attach(GTK_GRID(calgrid),clearbut,0,0,1,1);
+
+    //init of square button
+    squarebut = gtk_button_new_with_label("x²");
+    //placing the square button on the grid
+    gtk_grid_attach(GTK_GRID(calgrid),squarebut,1,0,1,1);
+
+    //init of MOD button
+    modbut = gtk_button_new_with_label("mod");
+    //placing mod button on the grid
+    gtk_grid_attach(GTK_GRID(calgrid),modbut,2,0,1,1);
 
     //Initialising the button for decimal ( . )
     decimalbut = gtk_button_new_with_label(".");
@@ -129,6 +142,10 @@ static void activate(GtkApplication *app, gpointer user_data) {
     //Placing the clear button on the grid
     gtk_grid_attach(GTK_GRID(calgrid),percentbut,2,4,1,1);
 
+    //Init for the = or the result button
+    resultbut = gtk_button_new_with_label("=");
+    //Placing button on the grid
+    gtk_grid_attach(GTK_GRID(calgrid),resultbut,3,4,1,1);
 
 
 
