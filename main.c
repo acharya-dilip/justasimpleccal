@@ -76,52 +76,62 @@ static void activate(GtkApplication *app, gpointer user_data) {
     numbut1 = gtk_button_new_with_label("1");
     //Placing the numbut1 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut1,0+movecol,1+moverow,1,1);
+    g_signal_connect(numbut1,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
 
     //Initialising the button for 2
     numbut2 = gtk_button_new_with_label("2");
     //placing the numbut2 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut2,1+movecol,1+moverow,1,1);
+    g_signal_connect(numbut2,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Initialising the button for 3
     numbut3 =gtk_button_new_with_label("3");
     //placing the numbut3 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut3,2+movecol,1+moverow,1,1);
+    g_signal_connect(numbut3,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Initialising the button for 4
     numbut4 = gtk_button_new_with_label("4");
     //placing the numbut4 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut4,0+movecol,2+moverow,1,1);
+    g_signal_connect(numbut4,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Intialising the button for 5
     numbut5 =gtk_button_new_with_label("5");
     //placing the numbut5 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut5,1+movecol,2+moverow,1,1);
+    g_signal_connect(numbut5,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Intialising the button for 6
     numbut6 =gtk_button_new_with_label("6");
     //placing the numbut6 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut6,2+movecol,2+moverow,1,1);
+    g_signal_connect(numbut6,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Initialising the button for 7
     numbut7 = gtk_button_new_with_label("7");
     //placing the numbut7 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut7,0+movecol,3+moverow,1,1);
+    g_signal_connect(numbut7,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Initialising the button for 8
     numbut8 = gtk_button_new_with_label("8");
     //placing the numbut8 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut8,1+movecol,3+moverow,1,1);
+    g_signal_connect(numbut8,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Initialsing the button for 9
     numbut9 = gtk_button_new_with_label("9");
     //placing the numbut9 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut9,2+movecol,3+moverow,1,1);
+    g_signal_connect(numbut9,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //Intialising the button for 0
     numbut0 = gtk_button_new_with_label("0");
     //placing the numbut0 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut0,1+movecol,4+moverow,1,1);
+    g_signal_connect(numbut0,"clicked",G_CALLBACK(pressButtonNumber),NULL);
 
     //BASIC ARITHMATIC OPERATORS
     //Initiliasising the button for addition
