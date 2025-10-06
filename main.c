@@ -1,13 +1,25 @@
 #include <stdio.h>
 #include <gtk/gtk.h>
+//TEXT TO DISPLAY ON THE DISPLAYBAR
+int a;
+int b;
+char oprtr[20];
+int result;
 
+void displaychanges(GtkWidget *displaybar, gpointer data) {
+    gtk_frame_set_label(GTK_FRAME(displaybar), "update");
+}
 
+void butpress1(GtkWidget *widget, gpointer data) {
+    displaychanges(widget, data);
+}
 
 static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *calculator;
     GtkWidget *displaystuff; //stuff to be displayed on display
-    GtkWidget *displaybar; //a display bar to see what's happening
+
     GtkWidget *calbuttongrid; //the grid for buttons
+    GtkWidget *displaybar; //a display bar to see what's happening
     GtkWidget *numbut1;//button for 1
     GtkWidget *numbut2;//button for 2
     GtkWidget *numbut3;//button for 3
@@ -26,14 +38,10 @@ static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *dividebut; //button to divide
     GtkWidget *percentbut; //button for percentage thingy
     GtkWidget *resultbut; //button for getting the result
-    GtkWidget *modbut; //button for mod operation or getting remainder operation
+    GtkWidget *rootbut; //button for mod operation or getting remainder operation
     GtkWidget *squarebut; //button for squaring
 
-    //TEXT TO DISPLAY ON THE DISPLAYBAR
-    int a;
-    int b;
-    char oprtr[20];
-    int result;
+
 
     //Create a new Window
     calculator= gtk_application_window_new (app);
@@ -47,42 +55,24 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
     calbuttongrid=gtk_grid_new(); //Initializing the calbutton grid Grid
     gtk_window_set_child (GTK_WINDOW (calculator),calbuttongrid);//setting the main grid ass the child of main window
+    //Margins and Paddings
+    gtk_widget_set_halign(GTK_WIDGET(calbuttongrid),GTK_ALIGN_CENTER);
+    gtk_widget_set_valign(GTK_WIDGET(calbuttongrid),GTK_ALIGN_CENTER);
 
     //DISPLAY BAR
 
     //initialising displaybar
-    displaybar = gtk_frame_new("0");
+    displaybar = gtk_frame_new("");
     //attaching frame to grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),displaybar,0,0,4,1);
-
-
-
+    gtk_frame_set_label(GTK_FRAME(displaybar),"0");
 
 
     //PROTOTYPE helper for BUTTONS that move them in entire rows or columns together
     int moverow = 2;
     int movecol = 0;
 
-    //BASIC ARITHMATIC OPERATORS
-    //Initiliasising the button for addition
-    addbut = gtk_button_new_with_label("+");
-    //Placing the addition button on the grid
-    gtk_grid_attach(GTK_GRID(calbuttongrid),addbut,3+movecol,0+moverow,1,1);
 
-    //Init for subtract button
-    subtractbut = gtk_button_new_with_label("-");
-    //Placing the button on the grid
-    gtk_grid_attach(GTK_GRID(calbuttongrid),subtractbut,3+movecol,1+moverow,1,1);
-
-    //Init for Multiply button
-    multiplybut = gtk_button_new_with_label("×");
-    //placing the multiply button on the grid
-    gtk_grid_attach(GTK_GRID(calbuttongrid),multiplybut,3+movecol,2+moverow,1,1);
-
-    //Init for divide button
-    dividebut = gtk_button_new_with_label("÷");
-    //Placing the divide button on the grid
-    gtk_grid_attach(GTK_GRID(calbuttongrid),dividebut,3+movecol,3+moverow,1,1);
 
 
     //THE NUMBER BUTTONS
@@ -137,6 +127,27 @@ static void activate(GtkApplication *app, gpointer user_data) {
     //placing the numbut0 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut0,1+movecol,4+moverow,1,1);
 
+    //BASIC ARITHMATIC OPERATORS
+    //Initiliasising the button for addition
+    addbut = gtk_button_new_with_label("+");
+    //Placing the addition button on the grid
+    gtk_grid_attach(GTK_GRID(calbuttongrid),addbut,3+movecol,0+moverow,1,1);
+
+    //Init for subtract button
+    subtractbut = gtk_button_new_with_label("-");
+    //Placing the button on the grid
+    gtk_grid_attach(GTK_GRID(calbuttongrid),subtractbut,3+movecol,1+moverow,1,1);
+
+    //Init for Multiply button
+    multiplybut = gtk_button_new_with_label("×");
+    //placing the multiply button on the grid
+    gtk_grid_attach(GTK_GRID(calbuttongrid),multiplybut,3+movecol,2+moverow,1,1);
+
+    //Init for divide button
+    dividebut = gtk_button_new_with_label("÷");
+    //Placing the divide button on the grid
+    gtk_grid_attach(GTK_GRID(calbuttongrid),dividebut,3+movecol,3+moverow,1,1);
+
     //OTHER MISC BUTTONS
 
     //init of clear display button
@@ -149,10 +160,10 @@ static void activate(GtkApplication *app, gpointer user_data) {
     //placing the square button on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),squarebut,1+movecol,0+moverow,1,1);
 
-    //init of MOD button
-    modbut = gtk_button_new_with_label("mod");
-    //placing mod button on the grid
-    gtk_grid_attach(GTK_GRID(calbuttongrid),modbut,2+movecol,0+moverow,1,1);
+    //init of root button
+    rootbut = gtk_button_new_with_label("√x");
+    //placing root button on the grid
+    gtk_grid_attach(GTK_GRID(calbuttongrid),rootbut,2+movecol,0+moverow,1,1);
 
     //Initialising the button for decimal ( . )
     decimalbut = gtk_button_new_with_label(".");
