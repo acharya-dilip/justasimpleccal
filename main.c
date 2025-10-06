@@ -6,13 +6,8 @@ int b;
 char oprtr[20];
 int result;
 
-void displaychanges(GtkWidget *displaybar, gpointer data) {
-    gtk_frame_set_label(GTK_FRAME(displaybar), "update");
-}
+static void pressButtonNumber(GtkButton *button, gpointer user_data);
 
-void butpress1(GtkWidget *widget, gpointer data) {
-    displaychanges(widget, data);
-}
 
 static void activate(GtkApplication *app, gpointer user_data) {
     GtkWidget *calculator;
@@ -81,6 +76,7 @@ static void activate(GtkApplication *app, gpointer user_data) {
     numbut1 = gtk_button_new_with_label("1");
     //Placing the numbut1 on the grid
     gtk_grid_attach(GTK_GRID(calbuttongrid),numbut1,0+movecol,1+moverow,1,1);
+
 
     //Initialising the button for 2
     numbut2 = gtk_button_new_with_label("2");
@@ -183,6 +179,15 @@ static void activate(GtkApplication *app, gpointer user_data) {
 
 
 }
+
+static void pressButtonNumber(GtkButton *button, gpointer user_data) {
+
+}
+
+
+
+
+
 //This block is used to initialise the GUI and will be used for only that other work mainly happens in different functions
 int main(int argc, char **argv) {
     GtkApplication *app;
